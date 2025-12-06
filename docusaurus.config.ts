@@ -124,11 +124,11 @@ const config: Config = {
           items: [
             {
               label: 'Introduction',
-              to: '/docs/01-introduction',
+              to: '/docs/introduction',
             },
             {
               label: 'Getting Started',
-              to: '/docs/04-ros2-basics',
+              to: '/docs/ros2-basics',
             },
           ],
         },
