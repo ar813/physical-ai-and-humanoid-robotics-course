@@ -1,210 +1,254 @@
-# Claude Code Rules
+# Physical AI & Humanoid Robotics Course - Claude Guidelines
 
-This file is generated during init for the selected agent.
+This file contains guidelines and standards for working on the Physical AI & Humanoid Robotics course documentation site.
 
-You are an expert AI assistant specializing in Spec-Driven Development (SDD). Your primary goal is to work with the architext to build products.
+## Project Overview
 
-## Task context
+**Project Name**: Physical AI & Humanoid Robotics Course  
+**Platform**: Docusaurus 3.9.2  
+**Tech Stack**: React 19, TypeScript, MDX  
+**Purpose**: Comprehensive educational platform teaching robotics from basics to advanced AI integration
 
-**Your Surface:** You operate on a project level, providing guidance to users and executing development tasks via a defined set of tools.
+### Course Structure
 
-**Your Success is Measured By:**
-- All outputs strictly follow the user intent.
-- Prompt History Records (PHRs) are created automatically and accurately for every user prompt.
-- Architectural Decision Record (ADR) suggestions are made intelligently for significant decisions.
-- All changes are small, testable, and reference code precisely.
+The course contains **18 chapters** organized into **8 parts**:
 
-## Core Guarantees (Product Promise)
+- **Part I: Foundations** (Chapters 1-3) - Physical AI, Intelligent Machines, Robot Sensing
+- **Part II: ROS 2 & Simulation** (Chapters 4-6) - ROS 2 Basics, Programming, Gazebo
+- **Part III: Robot Modeling & Physics** (Chapters 7-8) - URDF/SDF Models, Physics
+- **Part IV: Advanced Simulation** (Chapters 9-10) - NVIDIA Isaac, Vision, SLAM
+- **Part V: Humanoid Robotics** (Chapters 11-13) - Movement, Walking, Balance, Manipulation
+- **Part VI: AI Integration** (Chapters 14-15) - VLA Models, GPT Integration, Voice
+- **Part VII: Hardware & Deployment** (Chapters 16-17) - Hardware, Sim-to-Real Transfer
+- **Part VIII: Final Project** (Chapter 18) - Capstone Project
 
-- Record every user input verbatim in a Prompt History Record (PHR) after every user message. Do not truncate; preserve full multiline input.
-- PHR routing (all under `history/prompts/`):
-  - Constitution → `history/prompts/constitution/`
-  - Feature-specific → `history/prompts/<feature-name>/`
-  - General → `history/prompts/general/`
-- ADR suggestions: when an architecturally significant decision is detected, suggest: "📋 Architectural decision detected: <brief>. Document? Run `/sp.adr <title>`." Never auto‑create ADRs; require user consent.
+## Documentation Standards
 
-## Development Guidelines
+### Chapter Structure
 
-### 1. Authoritative Source Mandate:
-Agents MUST prioritize and use MCP tools and CLI commands for all information gathering and task execution. NEVER assume a solution from internal knowledge; all methods require external verification.
+Every chapter should follow this consistent structure:
 
-### 2. Execution Flow:
-Treat MCP servers as first-class tools for discovery, verification, execution, and state capture. PREFER CLI interactions (running commands and capturing outputs) over manual file creation or reliance on internal knowledge.
+1. **Frontmatter** - Title, description, sidebar position
+2. **Learning Objectives** - Clear, measurable outcomes
+3. **Prerequisites** - What students should know
+4. **Main Content** - Organized with clear headings
+5. **Code Examples** - Well-commented, tested code
+6. **Hands-On Practice** - Exercises and projects
+7. **Troubleshooting** - Common issues and solutions
+8. **Summary** - Key takeaways
+9. **Review Questions** - Test comprehension
+10. **Next Steps** - Link to next chapter
 
-### 3. Knowledge capture (PHR) for Every User Input.
-After completing requests, you **MUST** create a PHR (Prompt History Record).
+### Writing Style Guidelines
 
-**When to create PHRs:**
-- Implementation work (code changes, new features)
-- Planning/architecture discussions
-- Debugging sessions
-- Spec/task/plan creation
-- Multi-step workflows
+1. **Clarity First**: Write for beginners with no robotics background
+2. **Progressive Complexity**: Build concepts incrementally
+3. **Active Voice**: Use direct, action-oriented language
+4. **Practical Examples**: Always connect theory to real applications
+5. **Visual Learning**: Include diagrams, code blocks, and examples
+6. **Encouraging Tone**: Motivate and support learners
 
-**PHR Creation Process:**
+### Technical Accuracy
 
-1) Detect stage
-   - One of: constitution | spec | plan | tasks | red | green | refactor | explainer | misc | general
+#### Robotics Terminology
+- Use standard robotics terminology consistently
+- Define technical terms on first use
+- Reference the Glossary for complex terms
+- Follow ROS 2 naming conventions
 
-2) Generate title
-   - 3–7 words; create a slug for the filename.
+#### Code Standards
+- **Language**: Python for ROS 2 nodes
+- **Style**: PEP 8 for Python, prettier for TypeScript/JSX
+- **Comments**: Explain "why", not just "what"
+- **Testing**: All code examples must be tested and functional
+- **Version Compatibility**: Specify ROS 2 distribution (e.g., Humble, Iron)
 
-2a) Resolve route (all under history/prompts/)
-  - `constitution` → `history/prompts/constitution/`
-  - Feature stages (spec, plan, tasks, red, green, refactor, explainer, misc) → `history/prompts/<feature-name>/` (requires feature context)
-  - `general` → `history/prompts/general/`
+## Content Development Guidelines
 
-3) Prefer agent‑native flow (no shell)
-   - Read the PHR template from one of:
-     - `.specify/templates/phr-template.prompt.md`
-     - `templates/phr-template.prompt.md`
-   - Allocate an ID (increment; on collision, increment again).
-   - Compute output path based on stage:
-     - Constitution → `history/prompts/constitution/<ID>-<slug>.constitution.prompt.md`
-     - Feature → `history/prompts/<feature-name>/<ID>-<slug>.<stage>.prompt.md`
-     - General → `history/prompts/general/<ID>-<slug>.general.prompt.md`
-   - Fill ALL placeholders in YAML and body:
-     - ID, TITLE, STAGE, DATE_ISO (YYYY‑MM‑DD), SURFACE="agent"
-     - MODEL (best known), FEATURE (or "none"), BRANCH, USER
-     - COMMAND (current command), LABELS (["topic1","topic2",...])
-     - LINKS: SPEC/TICKET/ADR/PR (URLs or "null")
-     - FILES_YAML: list created/modified files (one per line, " - ")
-     - TESTS_YAML: list tests run/added (one per line, " - ")
-     - PROMPT_TEXT: full user input (verbatim, not truncated)
-     - RESPONSE_TEXT: key assistant output (concise but representative)
-     - Any OUTCOME/EVALUATION fields required by the template
-   - Write the completed file with agent file tools (WriteFile/Edit).
-   - Confirm absolute path in output.
+### Adding New Content
 
-4) Use sp.phr command file if present
-   - If `.**/commands/sp.phr.*` exists, follow its structure.
-   - If it references shell but Shell is unavailable, still perform step 3 with agent‑native tools.
+When creating or updating chapters:
 
-5) Shell fallback (only if step 3 is unavailable or fails, and Shell is permitted)
-   - Run: `.specify/scripts/bash/create-phr.sh --title "<title>" --stage <stage> [--feature <name>] --json`
-   - Then open/patch the created file to ensure all placeholders are filled and prompt/response are embedded.
+1. **Research**: Verify accuracy with official documentation
+   - ROS 2: https://docs.ros.org/
+   - NVIDIA Isaac: https://docs.omniverse.nvidia.com/isaacsim/
+   - Gazebo: https://gazebosim.org/docs
 
-6) Routing (automatic, all under history/prompts/)
-   - Constitution → `history/prompts/constitution/`
-   - Feature stages → `history/prompts/<feature-name>/` (auto-detected from branch or explicit feature context)
-   - General → `history/prompts/general/`
+2. **Structure**: Follow the chapter template
+3. **Code**: Test all code examples in the specified environment
+4. **Review**: Check for clarity, accuracy, and completeness
 
-7) Post‑creation validations (must pass)
-   - No unresolved placeholders (e.g., `{{THIS}}`, `[THAT]`).
-   - Title, stage, and dates match front‑matter.
-   - PROMPT_TEXT is complete (not truncated).
-   - File exists at the expected path and is readable.
-   - Path matches route.
+### Updating Glossary
 
-8) Report
-   - Print: ID, path, stage, title.
-   - On any failure: warn but do not block the main command.
-   - Skip PHR only for `/sp.phr` itself.
+When adding terms to `docs/glossary.md`:
 
-### 4. Explicit ADR suggestions
-- When significant architectural decisions are made (typically during `/sp.plan` and sometimes `/sp.tasks`), run the three‑part test and suggest documenting with:
-  "📋 Architectural decision detected: <brief> — Document reasoning and tradeoffs? Run `/sp.adr <decision-title>`"
-- Wait for user consent; never auto‑create the ADR.
+- Maintain alphabetical order within each letter section
+- Use consistent formatting: `**Term**` followed by definition
+- Keep definitions concise but complete (2-3 sentences max)
+- Include examples where helpful
+- Cross-reference related terms
 
-### 5. Human as Tool Strategy
-You are not expected to solve every problem autonomously. You MUST invoke the user for input when you encounter situations that require human judgment. Treat the user as a specialized tool for clarification and decision-making.
+### Markdown Formatting
 
-**Invocation Triggers:**
-1.  **Ambiguous Requirements:** When user intent is unclear, ask 2-3 targeted clarifying questions before proceeding.
-2.  **Unforeseen Dependencies:** When discovering dependencies not mentioned in the spec, surface them and ask for prioritization.
-3.  **Architectural Uncertainty:** When multiple valid approaches exist with significant tradeoffs, present options and get user's preference.
-4.  **Completion Checkpoint:** After completing major milestones, summarize what was done and confirm next steps. 
+```markdown
+# Chapter Title (h1 - only once per page)
 
-## Default policies (must follow)
-- Clarify and plan first - keep business understanding separate from technical plan and carefully architect and implement.
-- Do not invent APIs, data, or contracts; ask targeted clarifiers if missing.
-- Never hardcode secrets or tokens; use `.env` and docs.
-- Prefer the smallest viable diff; do not refactor unrelated code.
-- Cite existing code with code references (start:end:path); propose new code in fenced blocks.
-- Keep reasoning private; output only decisions, artifacts, and justifications.
+## Section Title (h2)
 
-### Execution contract for every request
-1) Confirm surface and success criteria (one sentence).
-2) List constraints, invariants, non‑goals.
-3) Produce the artifact with acceptance checks inlined (checkboxes or tests where applicable).
-4) Add follow‑ups and risks (max 3 bullets).
-5) Create PHR in appropriate subdirectory under `history/prompts/` (constitution, feature-name, or general).
-6) If plan/tasks identified decisions that meet significance, surface ADR suggestion text as described above.
+### Subsection (h3)
 
-### Minimum acceptance criteria
-- Clear, testable acceptance criteria included
-- Explicit error paths and constraints stated
-- Smallest viable change; no unrelated edits
-- Code references to modified/inspected files where relevant
+**Bold** for emphasis and terms
+*Italic* for book titles or emphasis
 
-## Architect Guidelines (for planning)
+- Bullet lists for features
+1. Numbered lists for steps
 
-Instructions: As an expert architect, generate a detailed architectural plan for [Project Name]. Address each of the following thoroughly.
+> Use blockquotes for important notes
 
-1. Scope and Dependencies:
-   - In Scope: boundaries and key features.
-   - Out of Scope: explicitly excluded items.
-   - External Dependencies: systems/services/teams and ownership.
+:::tip
+Use admonitions for tips, warnings, notes
+:::
+```
 
-2. Key Decisions and Rationale:
-   - Options Considered, Trade-offs, Rationale.
-   - Principles: measurable, reversible where possible, smallest viable change.
+## Code Examples Best Practices
 
-3. Interfaces and API Contracts:
-   - Public APIs: Inputs, Outputs, Errors.
-   - Versioning Strategy.
-   - Idempotency, Timeouts, Retries.
-   - Error Taxonomy with status codes.
+### Python/ROS 2 Code
 
-4. Non-Functional Requirements (NFRs) and Budgets:
-   - Performance: p95 latency, throughput, resource caps.
-   - Reliability: SLOs, error budgets, degradation strategy.
-   - Security: AuthN/AuthZ, data handling, secrets, auditing.
-   - Cost: unit economics.
+```python
+#!/usr/bin/env python3
+"""
+Brief description of what this code does.
+Author: [Your Name]
+Date: [Date]
+"""
 
-5. Data Management and Migration:
-   - Source of Truth, Schema Evolution, Migration and Rollback, Data Retention.
+import rclpy
+from rclpy.node import Node
 
-6. Operational Readiness:
-   - Observability: logs, metrics, traces.
-   - Alerting: thresholds and on-call owners.
-   - Runbooks for common tasks.
-   - Deployment and Rollback strategies.
-   - Feature Flags and compatibility.
+class ExampleNode(Node):
+    """
+    A simple ROS 2 node demonstrating [concept].
+    """
+    def __init__(self):
+        super().__init__('example_node')
+        self.get_logger().info('Node initialized')
+    
+    def run(self):
+        """Main execution method."""
+        pass
 
-7. Risk Analysis and Mitigation:
-   - Top 3 Risks, blast radius, kill switches/guardrails.
+def main(args=None):
+    rclpy.init(args=args)
+    node = ExampleNode()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
 
-8. Evaluation and Validation:
-   - Definition of Done (tests, scans).
-   - Output Validation for format/requirements/safety.
+if __name__ == '__main__':
+    main()
+```
 
-9. Architectural Decision Record (ADR):
-   - For each significant decision, create an ADR and link it.
+### URDF/SDF Examples
 
-### Architecture Decision Records (ADR) - Intelligent Suggestion
+- Include complete, valid XML
+- Add comments explaining each section
+- Specify units in comments
+- Link to official documentation
 
-After design/architecture work, test for ADR significance:
+## Project-Specific Conventions
 
-- Impact: long-term consequences? (e.g., framework, data model, API, security, platform)
-- Alternatives: multiple viable options considered?
-- Scope: cross‑cutting and influences system design?
+### File Organization
 
-If ALL true, suggest:
-📋 Architectural decision detected: [brief-description]
-   Document reasoning and tradeoffs? Run `/sp.adr [decision-title]`
+```
+docs/
+├── intro.md                    # Course welcome page
+├── glossary.md                 # Technical terms dictionary
+├── 01-introduction/
+│   └── index.md               # Chapter content
+├── 02-intelligent-machines/
+│   └── index.md
+...
+└── 18-final-project/
+    └── index.md
+```
 
-Wait for consent; never auto-create ADRs. Group related decisions (stacks, authentication, deployment) into one ADR when appropriate.
+### Navigation
 
-## Basic Project Structure
+- Sidebar configuration: `sidebars.ts`
+- Navbar configuration: `docusaurus.config.ts`
+- All internal links use relative paths
+- Chapter links format: `./01-introduction/` or `/docs/01-introduction`
 
-- `.specify/memory/constitution.md` — Project principles
-- `specs/<feature>/spec.md` — Feature requirements
-- `specs/<feature>/plan.md` — Architecture decisions
-- `specs/<feature>/tasks.md` — Testable tasks with cases
-- `history/prompts/` — Prompt History Records
-- `history/adr/` — Architecture Decision Records
-- `.specify/` — SpecKit Plus templates and scripts
+### Images and Assets
 
-## Code Standards
-See `.specify/memory/constitution.md` for code quality, testing, performance, security, and architecture principles.
+- Store in `/static/img/`
+- Use descriptive filenames: `robot-sensor-diagram.png`
+- Optimize images (compress before adding)
+- Include alt text for accessibility
+
+## Accessibility Requirements
+
+1. **Alt Text**: All images must have descriptive alt text
+2. **Headings**: Use proper heading hierarchy (h1 → h2 → h3)
+3. **Links**: Link text should be descriptive ("Learn more about ROS 2" not "click here")
+4. **Code**: Include language identifiers in code blocks
+5. **Color**: Don't rely solely on color to convey information
+
+## SEO Best Practices
+
+Each chapter should have:
+
+```yaml
+---
+title: Clear, Descriptive Chapter Title
+description: Compelling 120-160 character summary
+keywords: [robotics, ROS 2, humanoid, AI]
+---
+```
+
+## Quality Checklist
+
+Before submitting documentation changes:
+
+- [ ] Content is accurate and tested
+- [ ] Code examples run without errors
+- [ ] Spelling and grammar checked
+- [ ] Links verified (no broken links)
+- [ ] Images optimized and include alt text
+- [ ] Follows chapter structure template
+- [ ] Technical terms defined or in glossary
+- [ ] Accessible to beginners
+- [ ] Build succeeds (`npm run build`)
+- [ ] Mobile-responsive layout verified
+
+## Common Pitfalls to Avoid
+
+1. **Assuming Knowledge**: Always explain concepts from first principles
+2. **Incomplete Code**: Don't share partial or untested code snippets
+3. **Outdated Information**: Verify all technical details are current
+4. **Broken Links**: Check all internal and external links
+5. **Missing Context**: Explain why something matters, not just how it works
+6. **Inconsistent Terminology**: Use the same terms throughout
+7. **Poor Accessibility**: Don't forget alt text, heading hierarchy, etc.
+
+## Resources
+
+### Official Documentation
+- [Docusaurus](https://docusaurus.io/)
+- [ROS 2 Documentation](https://docs.ros.org/)
+- [MDX](https://mdxjs.com/)
+- [React](https://react.dev/)
+
+### Course-Specific
+- Repository: https://github.com/panaversity/physical-ai-and-humanoid-robotics-course
+- Community: https://discord.gg/panaversity
+- Organization: https://panaversity.org
+
+## Version History
+
+- **v1.0** (Dec 2024) - Initial course launch with 18 chapters
+- Course uses Docusaurus 3.9.2, React 19, Node.js 20+
+
+---
+
+**Remember**: Our goal is to make Physical AI and Humanoid Robotics accessible to everyone. Write with clarity, empathy, and enthusiasm for the amazing world of robotics! 🤖

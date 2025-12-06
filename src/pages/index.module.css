@@ -1,23 +1,199 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
 .heroBanner {
   padding: 4rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+.heroBanner .hero__title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.heroBanner .hero__subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  opacity: 0.95;
 }
 
 .buttons {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.buttonSpacing {
+  margin-left: 0 !important;
+}
+
+/* Highlights Section */
+.highlights {
+  padding: 4rem 0;
+  background-color: var(--ifm-background-surface-color);
+}
+
+.highlightGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.highlightCard {
+  padding: 2rem;
+  border-radius: 8px;
+  background: var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.highlightCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.highlightCard h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--ifm-color-primary);
+}
+
+.highlightCard p {
+  margin: 0;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.6;
+}
+
+/* Course Path Section */
+.coursePath {
+  padding: 4rem 0;
+  background-color: var(--ifm-background-color);
+}
+
+.pathGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.pathCard {
+  position: relative;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: var(--ifm-card-background-color);
+  border-left: 4px solid var(--ifm-color-primary);
+  transition: border-color 0.2s ease;
+}
+
+.pathCard:hover {
+  border-left-color: var(--ifm-color-primary-dark);
+}
+
+.partNumber {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ifm-color-primary);
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.pathCard h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  margin-right: 3rem;
+  color: var(--ifm-heading-color);
+}
+
+.chapters {
+  font-size: 0.9rem;
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.topics {
+  font-size: 0.95rem;
+  color: var(--ifm-color-emphasis-600);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* CTA Section */
+.ctaSection {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.ctaSection h2 {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.ctaSection p {
+  font-size: 1.25rem;
+  opacity: 0.95;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 996px) {
+  .heroBanner .hero__title {
+    font-size: 2.5rem;
+  }
+
+  .heroBanner .hero__subtitle {
+    font-size: 1.25rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .highlightGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .pathGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaSection h2 {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .heroBanner {
+    padding: 3rem 0;
+  }
+
+  .heroBanner .hero__title {
+    font-size: 2rem;
+  }
+
+  .heroBanner .hero__subtitle {
+    font-size: 1.1rem;
+  }
+
+  .highlights,
+  .coursePath,
+  .ctaSection {
+    padding: 3rem 0;
+  }
 }

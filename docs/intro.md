@@ -1,47 +1,114 @@
 ---
 sidebar_position: 1
+title: Welcome to Physical AI & Humanoid Robotics
+description: Learn to build intelligent robots from basics to advanced AI integration
 ---
 
-# Tutorial Intro
+# Welcome to Physical AI & Humanoid Robotics Course
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Welcome to the comprehensive guide on **Physical AI and Humanoid Robotics**! This course will take you on an exciting journey from understanding basic robot concepts to building advanced humanoid robots with AI capabilities.
 
-## Getting Started
+## 🎯 What You'll Learn
 
-Get started by **creating a new site**.
+This course covers everything you need to know to build intelligent robots:
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+- **Fundamentals**: Understanding Physical AI, robot sensing, and intelligent machines
+- **ROS 2 Programming**: Learn the industry-standard Robot Operating System
+- **Simulation**: Build and test robots in virtual environments (Gazebo, Unity, NVIDIA Isaac)
+- **Humanoid Robotics**: Master bipedal walking, balance, and manipulation
+- **AI Integration**: Implement Vision-Language-Action models and GPT-powered robots
+- **Real-World Deployment**: Transfer learning from simulation to physical robots
 
-### What you'll need
+## 📚 Course Structure
 
-- [Node.js](https://nodejs.org/en/download/) version 20.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+The course is organized into **8 parts** with **18 comprehensive chapters**:
 
-## Generate a new site
+### Part I: Foundations
+Get started with the basics of Physical AI and robotics.
 
-Generate a new Docusaurus site using the **classic template**.
+### Part II: ROS 2 & Simulation
+Learn ROS 2 programming and simulation environments.
 
-The classic template will automatically be added to your project after you run the command:
+### Part III: Robot Modeling & Physics
+Understand how to model robots and simulate physics.
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+### Part IV: Advanced Simulation
+Master NVIDIA Isaac Sim and robot vision systems.
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+### Part V: Humanoid Robotics
+Learn humanoid movement, walking, and manipulation.
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+### Part VI: AI Integration
+Integrate advanced AI models with robots.
 
-## Start your site
+### Part VII: Hardware & Deployment
+Understand hardware requirements and sim-to-real transfer.
 
-Run the development server:
+### Part VIII: Final Project
+Build your own smart humanoid robot!
 
-```bash
-cd my-website
-npm run start
-```
+## 🚀 Who Is This Course For?
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+This course is designed for:
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+- **Beginners** with no prior robotics experience
+- **Students** learning about Physical AI and robotics
+- **Developers** wanting to build intelligent robots
+- **Researchers** exploring humanoid robotics
+- **Hobbyists** passionate about robots and AI
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+## 💡 Learning Approach
+
+Each chapter follows a structured approach:
+
+- **Clear Learning Objectives**: Know what you'll learn
+- **Simple Explanations**: Easy-to-understand language
+- **Code Examples**: Tested, functional code with comments
+- **Hands-On Practice**: Simulation exercises and projects
+- **Troubleshooting**: Common mistakes and solutions
+- **Review Questions**: Test your understanding
+
+## 🛠️ Prerequisites
+
+To get the most out of this course, you should have:
+
+- Basic computer skills
+- Willingness to learn programming (Python basics will be taught)
+- A computer capable of running simulations (recommended: 8GB+ RAM)
+- Curiosity and enthusiasm for robotics!
+
+## 📖 How to Use This Course
+
+1. **Start from the beginning**: Chapters build on each other
+2. **Practice as you learn**: Try all code examples
+3. **Complete exercises**: Hands-on practice is essential
+4. **Ask questions**: Use the community forums
+5. **Build projects**: Apply what you learn
+
+## 🎓 Course Outcomes
+
+By the end of this course, you will be able to:
+
+✅ Understand fundamental concepts of Physical AI and robotics  
+✅ Program robots using ROS 2 and Python  
+✅ Create and test robots in simulation environments  
+✅ Build humanoid robots with walking and manipulation capabilities  
+✅ Integrate AI models (GPT, VLA) with robots  
+✅ Deploy robots from simulation to real hardware  
+✅ Complete a capstone project demonstrating all skills  
+
+## 🌟 Let's Get Started!
+
+Ready to begin your journey into the exciting world of Physical AI and Humanoid Robotics?
+
+👉 **[Start with Chapter 1: Introduction to Physical AI and Robots](./01-introduction/index.md)**
+
+---
+
+## 📞 Need Help?
+
+- **Community**: Join our Discord community
+- **Resources**: Check the [Glossary](./glossary.md) for technical terms
+- **Support**: Visit [Panaversity](https://panaversity.org) for more resources
+
+Happy learning! 🤖

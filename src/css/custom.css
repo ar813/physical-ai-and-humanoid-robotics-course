@@ -1,30 +1,252 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
+/* Custom CSS - Professional & Clean Design */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+    /* Typography */
+    --ifm-font-family-base: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    --ifm-font-family-monospace: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --ifm-heading-font-weight: 700;
+    --ifm-line-height-base: 1.65;
+
+    /* Colors - Modern Professional Palette (Indigo/Slate) */
+    --ifm-color-primary: #4f46e5;
+    /* Indigo 600 */
+    --ifm-color-primary-dark: #4338ca;
+    --ifm-color-primary-darker: #3730a3;
+    --ifm-color-primary-darkest: #312e81;
+    --ifm-color-primary-light: #6366f1;
+    --ifm-color-primary-lighter: #818cf8;
+    --ifm-color-primary-lightest: #a5b4fc;
+
+    --ifm-background-color: #ffffff;
+    --ifm-background-surface-color: #f8fafc;
+    /* Slate 50 */
+    --ifm-text-color: #0f172a;
+    /* Slate 900 */
+
+    /* UI Elements */
+    --border-radius-base: 8px;
+    --border-radius-large: 12px;
+    --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --card-shadow-hover: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+    --ifm-color-primary: #818cf8;
+    /* Indigo 400 */
+    --ifm-color-primary-dark: #6366f1;
+    --ifm-color-primary-darker: #4f46e5;
+    --ifm-color-primary-darkest: #4338ca;
+    --ifm-color-primary-light: #a5b4fc;
+    --ifm-color-primary-lighter: #c7d2fe;
+    --ifm-color-primary-lightest: #e0e7ff;
+
+    --ifm-background-color: #0f172a;
+    /* Slate 900 */
+    --ifm-background-surface-color: #1e293b;
+    /* Slate 800 */
+    --ifm-text-color: #f1f5f9;
+    /* Slate 100 */
+}
+
+/* Global Improvements */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Navbar Styling */
+.navbar {
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    backdrop-filter: blur(12px);
+    background-color: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='dark'] .navbar {
+    background-color: rgba(15, 23, 42, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar__item {
+    font-weight: 500;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Hero Section */
+.hero {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, var(--ifm-color-primary-lightest) 0%, var(--ifm-color-primary-light) 100%);
+    color: white;
+    margin-bottom: 2rem;
+    border-radius: 0 0 var(--border-radius-large) var(--border-radius-large);
+}
+
+[data-theme='dark'] .hero {
+    background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary-dark) 100%);
+}
+
+.hero__title {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.05rem;
+}
+
+/* Sidebar & Navigation */
+.theme-doc-sidebar-menu {
+    padding: 0.5rem;
+}
+
+.menu__link {
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.menu__link:hover {
+    background-color: var(--ifm-color-primary-lightest);
+    color: var(--ifm-color-primary-darker);
+}
+
+[data-theme='dark'] .menu__link:hover {
+    background-color: var(--ifm-color-primary-darker);
+    color: var(--ifm-color-primary-lightest);
+}
+
+.menu__link--active {
+    font-weight: 600;
+    background-color: rgba(99, 102, 241, 0.1);
+    /* Indigo tint */
+}
+
+/* Cards & Content */
+.card {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--card-shadow);
+    transition: var(--ifm-transition-fast);
+    background-color: var(--ifm-background-surface-color);
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: var(--ifm-color-primary-light);
+}
+
+[data-theme='dark'] .card {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Markdown Content Styling */
+article header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: -webkit-linear-gradient(120deg, var(--ifm-color-primary), var(--ifm-color-primary-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+}
+
+.markdown h2 {
+    font-size: 1.75rem;
+    border-bottom: 2px solid var(--ifm-color-primary-lightest);
+    padding-bottom: 0.5rem;
+    margin-top: 2.5rem;
+}
+
+[data-theme='dark'] .markdown h2 {
+    border-bottom-color: var(--ifm-color-primary-darker);
+}
+
+.markdown blockquote {
+    border-left: 4px solid var(--ifm-color-primary);
+    background-color: rgba(99, 102, 241, 0.05);
+    border-radius: 0 var(--border-radius-base) var(--border-radius-base) 0;
+    padding: 1rem 1.5rem;
+    color: var(--ifm-text-color);
+}
+
+/* Admonitions */
+.alert {
+    border-radius: var(--border-radius-base);
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Buttons */
+/* Buttons */
+.button {
+    font-weight: 700;
+    border-radius: 50px;
+    /* Pillow shape for modern look */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.9rem;
+    padding: 0.8rem 2rem;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    outline: #95a9c5 1px solid;
+}
+
+.button--primary {
+    background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+}
+
+.button--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.5);
+    background: linear-gradient(135deg, var(--ifm-color-primary-light) 0%, var(--ifm-color-primary) 100%);
+    text-decoration: none;
+    color: white;
+}
+
+.button--secondary {
+    background: white;
+    color: var(--ifm-color-primary);
+    border: 2px solid var(--ifm-color-primary);
+}
+
+.button--secondary:hover {
+    background: var(--ifm-color-primary-lightest);
+    color: var(--ifm-color-primary-dark);
+    transform: translateY(-2px);
+}
+
+.button--lg {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+/* Footer */
+.footer {
+    background-color: #0f172a;
+    color: #94a3b8;
+}
+
+.footer__title {
+    color: white;
+    font-weight: 700;
+}
+
+.footer__link-item {
+    transition: color 0.2s;
+}
+
+.footer__link-item:hover {
+    color: var(--ifm-color-primary-light);
+    text-decoration: none;
 }

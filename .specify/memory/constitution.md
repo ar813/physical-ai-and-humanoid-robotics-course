@@ -1,55 +1,161 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+Version change: 0.1.0 → 0.2.0
+Modified principles: None (new principles added)
+Added sections: Writing Rules, Project Structure Rules, AI Assistant Rules, Code Rules, Course Workflow Rules, Safety & Robotics Rules, Final Project (Capstone) Rules
+Removed sections: None
+Templates requiring updates:
+- .specify/templates/plan-template.md: ⚠ pending (review for alignment with new principles)
+- .specify/templates/spec-template.md: ⚠ pending (review for alignment with new principles)
+- .specify/templates/tasks-template.md: ⚠ pending (review for alignment with new principles)
+- .specify/templates/commands/*.md: ⚠ pending (review for outdated references)
+- README.md: ⚠ pending (review for references to principles)
+- docs/quickstart.md: ⚠ pending (review for references to principles)
+Follow-up TODOs:
+- TODO(RATIFICATION_DATE): If this is not the initial ratification, update with the correct date.
+-->
+# Physical AI & Humanoid Robotics Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Code Cleanliness & Readability
+Code will be clean and readable.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. TypeScript First
+TypeScript first. Avoid JS unless absolutely necessary. Use types for all variables, functions, and objects.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Small Chunks & Modularity
+Work in small chunks. Don’t make huge functions or files. Use multiple files for different features or modules. One function = one file if it’s big or important. Keep code modular — small, reusable functions. Avoid repeating code; use shared helpers or utils.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Clear Comments
+Pass comments using simple, easy words for everyone to understand. Use comments to explain “why” not “what” — code should show what it does.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Naming Conventions
+Keep naming simple and consistent (camelCase for variables, PascalCase for classes).
 
-### [PRINCIPLE_6_NAME]
+### VI. Documentation
+Always document inputs and outputs of functions.
 
+### VII. AI/Claude Generated Code
+Keep AI/Claude generated code clearly marked and reviewed.
 
-[PRINCIPLE__DESCRIPTION]
+### VIII. Meaningful Commit Messages
+Use meaningful commit messages.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### IX. Writing Rules (For the Book Content)
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+#### Content Structure
+- Every lesson must start with a simple explanation before advanced concepts.
+- Use short sentences and easy vocabulary.
+- Always give real-world examples and practical applications.
+- Each chapter must include:
+  - **Overview**: Clear learning objectives and chapter roadmap
+  - **Concepts Explained**: Step-by-step explanations with visual aids
+  - **Code Examples**: Well-commented, runnable code snippets
+  - **Simulation Steps**: Hands-on practice with detailed instructions
+  - **Practice Tasks**: Progressive exercises from basic to advanced
+  - **Common Mistakes**: Typical errors and how to avoid them
+  - **Troubleshooting**: Solutions to common problems
+  - **Summary**: Key takeaways and review questions
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+#### Writing Style
+- Keep paragraphs small (3–5 lines max).
+- Use active voice and present tense.
+- Avoid technical jargon unless necessary; if used, define it clearly in a glossary.
+- Use bullet points and numbered lists for clarity.
+- Include diagrams, flowcharts, and illustrations where helpful.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+#### Educational Best Practices
+- Build concepts progressively (scaffolding approach).
+- Provide multiple examples for complex concepts.
+- Include "Try It Yourself" sections for hands-on learning.
+- Add "Deep Dive" sections for advanced learners (optional reading).
+- Cross-reference related chapters and concepts.
+- Include real-world case studies and applications.
+
+#### Code Quality in Examples
+- All code examples must be tested and functional.
+- Include comments explaining each significant step.
+- Follow the TypeScript and coding rules defined in this constitution.
+- Provide both simple and advanced versions where appropriate.
+- Include error handling in code examples.
+
+#### Accessibility & Inclusivity
+- Use simple, clear language accessible to non-native English speakers.
+- Provide alternative explanations for complex concepts.
+- Include visual, textual, and code-based learning materials.
+- Ensure examples are culturally neutral and inclusive.
+
+### X. AI Assistant Rules (Claude Code CLI)
+- All AI-generated code must be simple, clear, and follow TypeScript rules.
+- Never ask AI to generate huge files; always ask in small chunks.
+- Tag all generated code with a comment: `// generated by Claude (prompt: <id>)`
+- Always review AI output manually before accepting.
+- If AI adds unnecessary complexity, simplify it.
+- All prompts must clearly say what format you want (.ts, .md, .spec.ts, .json).
+- Use step-by-step prompting: First outline, Then structure, Then content, Then examples.
+- Don’t let AI guess hardware details — always give specs.
+- Never allow AI to generate unsafe robot commands without limits.
+
+### XI. Code Rules (TypeScript Focused)
+- TypeScript first — use it for all new logic.
+- Write types for everything: params, returns, objects, options.
+- Use interfaces for structured objects.
+- One file = one feature.
+- Keep functions small and reusable.
+- No magic numbers — always use constants.
+- Use async/await properly; avoid callback hell.
+- Use ES modules only (import/export).
+- Put shared helpers in /utils/.
+- Put reusable types in /types/.
+- Keep file names clear.
+- Use JSDoc comments for all functions (`/** ... */`).
+
+### XII. Docusaurus Rules (Book Structure)
+
+#### Project Organization
+- Use Docusaurus v3 for the book website.
+- Organize content in `docs/` directory by chapter.
+- Use meaningful folder names (e.g., `01-introduction`, `02-intelligent-machines`).
+- Keep all static assets in `static/` directory.
+- Use `sidebars.ts` for navigation configuration.
+
+#### Content Structure
+- Each chapter should be in its own directory.
+- Use `index.md` for chapter overview.
+- Break long chapters into multiple pages.
+- Use consistent frontmatter for all pages:
+  ```yaml
+  ---
+  sidebar_position: 1
+  title: Chapter Title
+  description: Brief description
+  ---
+  ```
+
+#### Markdown Best Practices
+- Use MDX features for interactive components.
+- Include code blocks with proper syntax highlighting.
+- Use admonitions (:::note, :::tip, :::warning, :::danger) appropriately.
+- Add tabs for multi-language code examples.
+- Include images with descriptive alt text.
+
+#### Navigation & UX
+- Maintain logical sidebar ordering.
+- Use breadcrumbs for easy navigation.
+- Include "Next Steps" at the end of each chapter.
+- Add search functionality for easy content discovery.
+- Create a comprehensive table of contents.
+
+#### Build & Deployment
+- Ensure all builds pass without errors.
+- Test all links before deployment.
+- Optimize images for web performance.
+- Use versioning for major content updates.
+- Configure proper SEO metadata.
+
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+This constitution supersedes all other practices. Amendments require documentation, approval, and a migration plan. All Pull Requests and reviews must verify compliance with these principles.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 0.2.0 | **Ratified**: 2025-12-04 | **Last Amended**: 2025-12-04
