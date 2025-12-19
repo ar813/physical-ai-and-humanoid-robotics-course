@@ -60,7 +60,7 @@ function CourseHighlights() {
     <section className={styles.highlights}>
       <div className="container">
         <Heading as="h2" className="text--center margin-bottom--lg">
-          Why This Course?
+          Why This Course??
         </Heading>
         <div className={styles.highlightGrid}>
           {highlights.map((highlight, idx) => (
